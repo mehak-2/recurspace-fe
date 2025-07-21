@@ -22,6 +22,8 @@ import Integrations from "./components/Integrations";
 import Security from "./components/Security";
 import OAuthCallback from "./components/OAuthCallback";
 import Sidebar from "./components/Sidebar";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import Terms from "./pages/Terms";
 
 function ProtectedRoute({ children }: { children: React.ReactNode }) {
   const { isAuthenticated, token } = useSelector(
@@ -152,6 +154,8 @@ function App() {
             </ProtectedRoute>
           }
         />
+        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+        <Route path="/terms" element={<Terms />} />
       </Routes>
     </Router>
   );
