@@ -90,7 +90,7 @@ export default function Sidebar() {
             <div className="flex items-center space-x-2">
               <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
                 <img
-                  src="/src/assets/logo.png"
+                  src="/src/assets/recurspace-logo.png"
                   alt="RecurSpace"
                   className="w-10 h-10"
                 />
