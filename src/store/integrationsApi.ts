@@ -5,8 +5,10 @@ const getAuthToken = () => {
   return token ? `Bearer ${token}` : "";
 };
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 const baseQuery = fetchBaseQuery({
-  baseUrl: "http://localhost:5000/api",
+  baseUrl: API_URL + "/api",
   prepareHeaders: (headers) => {
     const token = getAuthToken();
     if (token) {

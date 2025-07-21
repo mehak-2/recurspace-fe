@@ -6,7 +6,7 @@ const getAuthToken = () => {
 };
 
 const baseQuery = fetchBaseQuery({
-  baseUrl: "http://localhost:5000/api",
+  baseUrl: import.meta.env.VITE_API_URL + "/api",
   prepareHeaders: (headers) => {
     const token = getAuthToken();
     if (token) {
@@ -53,7 +53,8 @@ export const tasksApi = createApi({
         url: "/tasks",
         params,
       }),
-      transformResponse: (response: { success: boolean; tasks: Task[] }) => response.tasks,
+      transformResponse: (response: { success: boolean; tasks: Task[] }) =>
+        response.tasks,
       providesTags: ["Task"],
     }),
     createTask: builder.mutation<Task, CreateTaskRequest>({
@@ -62,7 +63,8 @@ export const tasksApi = createApi({
         method: "POST",
         body: task,
       }),
-      transformResponse: (response: { success: boolean; task: Task }) => response.task,
+      transformResponse: (response: { success: boolean; task: Task }) =>
+        response.task,
       invalidatesTags: ["Task"],
     }),
     updateTask: builder.mutation<Task, { id: string; task: Partial<Task> }>({
@@ -71,7 +73,8 @@ export const tasksApi = createApi({
         method: "PUT",
         body: task,
       }),
-      transformResponse: (response: { success: boolean; task: Task }) => response.task,
+      transformResponse: (response: { success: boolean; task: Task }) =>
+        response.task,
       invalidatesTags: ["Task"],
     }),
     deleteTask: builder.mutation<void, string>({
@@ -87,12 +90,14 @@ export const tasksApi = createApi({
         method: "PATCH",
         body: { status: "completed" },
       }),
-      transformResponse: (response: { success: boolean; task: Task }) => response.task,
+      transformResponse: (response: { success: boolean; task: Task }) =>
+        response.task,
       invalidatesTags: ["Task"],
     }),
     getTaskById: builder.query<Task, string>({
       query: (id) => `/tasks/${id}`,
-      transformResponse: (response: { success: boolean; task: Task }) => response.task,
+      transformResponse: (response: { success: boolean; task: Task }) =>
+        response.task,
       providesTags: (result, error, id) => [{ type: "Task", id }],
     }),
   }),
