@@ -10,7 +10,6 @@ import {
   Settings,
   ChevronLeft,
   ChevronRight,
-  Zap,
   LogOut,
   User,
   Bell,
@@ -90,7 +89,11 @@ export default function Sidebar() {
           {!collapsed && (
             <div className="flex items-center space-x-2">
               <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
-                <Zap className="w-5 h-5 text-white" />
+                <img
+                  src="/src/assets/logo.png"
+                  alt="RecurSpace"
+                  className="w-10 h-10"
+                />
               </div>
               <span className="text-xl font-bold text-gray-900">
                 RecurSpace
